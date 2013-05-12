@@ -7,7 +7,8 @@ public class ShowOuterSkin : MonoBehaviour {
 	string display = "Hide Outer Skin";
 	// Use this for initialization
 	void Start () {
-		outer_skin = GameObject.Find("OuterSkin").transform;
+		//获取KD的外壳 董帅 2013-5-8
+		outer_skin = GameObject.Find("OuterSkin1").transform;
 	}
 	
 	void OnGUI () {

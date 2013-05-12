@@ -54,17 +54,18 @@ public class AuxiliaryMoveModule : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		Main=GameObject.Find("MainScript").GetComponent<ControlPanel>();
-		GameObject.Find("move_control").AddComponent("MoveControl");
+		//GameObject.Find("move_control").AddComponent("MoveControl");
 		MoveControl_script = GameObject.Find("move_control").GetComponent<MoveControl>();
+		//将变量与相应的组件对应起来 董帅 2013-5-9
+		Xp_part1=GameObject.Find("XYZ protecting crust_28").transform;
+		Xp_part2=GameObject.Find("XYZ protecting crust_27").transform;
+		Xp_part3=GameObject.Find("XYZ protecting crust_26").transform;
+		Xp_part4=GameObject.Find("XYZ protecting crust_25").transform;
 		
-		Xp_part1=GameObject.Find("X01_Y").transform;
-		Xp_part2=GameObject.Find("X02_Y").transform;
-		Xp_part3=GameObject.Find("X03_Y").transform;
-		Xp_part4=GameObject.Find("X04_Y").transform;
-		Xn_part1=GameObject.Find("X01_Z").transform;
-		Xn_part2=GameObject.Find("X02_Z").transform;
-		Xn_part3=GameObject.Find("X03_Z").transform;
-		Xn_part4=GameObject.Find("X04_Z").transform;
+		Xn_part1=GameObject.Find("XYZ protecting crust_17").transform;
+		Xn_part2=GameObject.Find("XYZ protecting crust_18").transform;
+		Xn_part3=GameObject.Find("XYZ protecting crust_19").transform;
+		Xn_part4=GameObject.Find("XYZ protecting crust_20").transform;
 		
 		Xp_zero1=Xp_part1.position.z;
 		Xp_zero2=Xp_part2.position.z;
@@ -75,18 +76,18 @@ public class AuxiliaryMoveModule : MonoBehaviour {
 		Xn_zero2=Xn_part2.position.z;
 		Xn_zero3=Xn_part3.position.z;
 		Xn_zero4=Xn_part4.position.z;
-		
-		Yn_part1=GameObject.Find("Y01").transform;
-		Yn_part2=GameObject.Find("Y02").transform;
-		Yn_part3=GameObject.Find("Y03").transform;
+		//将变量与相应的组件对应起来 董帅 2013-5-9
+		Yn_part1=GameObject.Find("XYZ protecting crust_9").transform;
+		Yn_part2=GameObject.Find("XYZ protecting crust_10").transform;
+		Yn_part3=GameObject.Find("XYZ protecting crust_11").transform;
 		
 		Yn_zero1=Yn_part1.position.x;
 		Yn_zero2=Yn_part2.position.x;
 		Yn_zero3=Yn_part3.position.x;
-		
-		Zn_part1=GameObject.Find("Z01").transform;
-		Zn_part2=GameObject.Find("Z02").transform;
-		Zn_part3=GameObject.Find("Z03").transform;
+		//将变量与相应的组件对应起来 董帅 2013-5-9
+		Zn_part1=GameObject.Find("XYZ protecting crust_6").transform;
+		Zn_part2=GameObject.Find("XYZ protecting crust_5").transform;
+		Zn_part3=GameObject.Find("XYZ protecting crust_4").transform;
 		
 		Zn_zero1=Zn_part1.position.y;
 		Zn_zero2=Zn_part2.position.y;
@@ -102,6 +103,9 @@ public class AuxiliaryMoveModule : MonoBehaviour {
 	}
 	void xMove()
 	{
+		//Debug.Log("X_part.position.z:"+MoveControl_script.X_part.position.z);
+		//Debug.Log("Xp_part4.position.z:"+Xp_part4.position.z);
+		
 		//X轴正向，离主轴最近的铁片的移动
 		X_distance=MoveControl_script.X_part.position.z-Xp_part4.position.z;
 		if(X_distance>0.165f)
@@ -152,6 +156,7 @@ public class AuxiliaryMoveModule : MonoBehaviour {
 		}
 		//X轴负向，离主轴最近的铁片的移动
 		X_distance=MoveControl_script.X_part.position.z-Xn_part4.position.z;
+		Debug.Log("X_distance:"+X_distance);
 		if(X_distance<-1.35f)
 		{
 			if(MoveControl_script.x_n)

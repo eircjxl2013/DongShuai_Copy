@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class ModelInitialize : MonoBehaviour {
-	GameObject KD;
+	GameObject KD; 
 	GameObject OuterSkin1;
 	GameObject X_axis1;
 	GameObject Y_axis1;
@@ -13,6 +13,7 @@ public class ModelInitialize : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		KD = GameObject.Find("KD");
+		Debug.Log("kd##:"+KD.transform.position);
 		foreach(Transform child in KD.transform)
 			AllTransform.Add(child);
 		OuterSkin1 = GameObject.Find("OuterSkin1");
@@ -20,11 +21,16 @@ public class ModelInitialize : MonoBehaviour {
 		Y_axis1 = GameObject.Find("Y_axis1");
 		Z_axis1 = GameObject.Find("Z_axis1");
 		TheRest = GameObject.Find("TheRest");
+		
 		OuterSkin1.transform.parent = KD.transform;
-		X_axis1.transform.parent = KD.transform;
+		X_axis1.transform.parent = Y_axis1.transform;
 		Y_axis1.transform.parent = KD.transform;
 		Z_axis1.transform.parent = KD.transform;
 		TheRest.transform.parent = KD.transform;
+		
+		//Debug.Log("X_axis1##:"+X_axis1.transform.position);
+		//Debug.Log("Y_axis1##:"+Y_axis1.transform.position);
+		//Debug.Log("Z_axis1##:"+Z_axis1.transform.position);
 		for(int i = 0; i < AllTransform.Count; i++)
 		{
 			if(AllTransform[i].name.StartsWith("Z axle"))
